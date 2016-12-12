@@ -1,0 +1,33 @@
+{
+  "name": "MSIBluetoothPrinter",
+  "version": "0.0.1",
+  "description": "A Cordova/Phonegap driver for Zebra bluetooth printers",
+  "cordova": {
+    "id": "msi.cordova.bluetooth.zbtprinter",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashah-violations/MSIBluetoothPrinter.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "author": "Avinash Shah",
+  "license": "Apache",
+  "bugs": {
+    "url": "https://github.com/ashah-violations/MSIBluetoothPrinter/issues"
+  },
+  "homepage": "https://github.com/ashah-violations/MSIBluetoothPrinter#readme"
+}

@@ -1,0 +1,76 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files (x86)\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'publish',
+1 verbose cli   'C:\\Users\\Avinash.Shah\\Documents\\GitHubVisualStudio\\MSIBluetoothPrinter' ]
+2 info using npm@2.7.4
+3 info using node@v0.12.2
+4 verbose node symlink C:\Program Files (x86)\nodejs\\node.exe
+5 verbose publish [ 'C:\\Users\\Avinash.Shah\\Documents\\GitHubVisualStudio\\MSIBluetoothPrinter' ]
+6 silly cache add args [ 'C:\\Users\\Avinash.Shah\\Documents\\GitHubVisualStudio\\MSIBluetoothPrinter',
+6 silly cache add   null ]
+7 verbose cache add spec C:\Users\Avinash.Shah\Documents\GitHubVisualStudio\MSIBluetoothPrinter
+8 silly cache add parsed spec { raw: 'C:\\Users\\Avinash.Shah\\Documents\\GitHubVisualStudio\\MSIBluetoothPrinter',
+8 silly cache add   scope: null,
+8 silly cache add   name: null,
+8 silly cache add   rawSpec: 'C:\\Users\\Avinash.Shah\\Documents\\GitHubVisualStudio\\MSIBluetoothPrinter',
+8 silly cache add   spec: 'C:\\Users\\Avinash.Shah\\Documents\\GitHubVisualStudio\\MSIBluetoothPrinter',
+8 silly cache add   type: 'directory' }
+9 verbose addLocalDirectory C:\Users\Avinash.Shah\AppData\Roaming\npm-cache\MSIBluetoothPrinter\0.0.1\package.tgz not in flight; packing
+10 verbose tar pack [ 'C:\\Users\\Avinash.Shah\\AppData\\Roaming\\npm-cache\\MSIBluetoothPrinter\\0.0.1\\package.tgz',
+10 verbose tar pack   'C:\\Users\\Avinash.Shah\\Documents\\GitHubVisualStudio\\MSIBluetoothPrinter' ]
+11 verbose tarball C:\Users\Avinash.Shah\AppData\Roaming\npm-cache\MSIBluetoothPrinter\0.0.1\package.tgz
+12 verbose folder C:\Users\Avinash.Shah\Documents\GitHubVisualStudio\MSIBluetoothPrinter
+13 info prepublish MSIBluetoothPrinter@0.0.1
+14 verbose addLocalTarball adding from inside cache C:\Users\Avinash.Shah\AppData\Roaming\npm-cache\MSIBluetoothPrinter\0.0.1\package.tgz
+15 silly cache afterAdd MSIBluetoothPrinter@0.0.1
+16 verbose afterAdd C:\Users\Avinash.Shah\AppData\Roaming\npm-cache\MSIBluetoothPrinter\0.0.1\package\package.json not in flight; writing
+17 verbose afterAdd C:\Users\Avinash.Shah\AppData\Roaming\npm-cache\MSIBluetoothPrinter\0.0.1\package\package.json written
+18 silly publish { name: 'MSIBluetoothPrinter',
+18 silly publish   version: '0.0.1',
+18 silly publish   description: 'A Cordova/Phonegap driver for Zebra bluetooth printers',
+18 silly publish   cordova:
+18 silly publish    { id: 'msi.cordova.bluetooth.zbtprinter',
+18 silly publish      platforms: [ 'android', 'ios' ] },
+18 silly publish   repository:
+18 silly publish    { type: 'git',
+18 silly publish      url: 'git+https://github.com/ashah-violations/MSIBluetoothPrinter.git' },
+18 silly publish   keywords: [ 'ecosystem:cordova', 'cordova-android', 'cordova-ios' ],
+18 silly publish   engines: [ { name: 'cordova', version: '>=3.0.0' } ],
+18 silly publish   author: { name: 'Avinash Shah' },
+18 silly publish   license: 'Apache',
+18 silly publish   bugs: { url: 'https://github.com/ashah-violations/MSIBluetoothPrinter/issues' },
+18 silly publish   homepage: 'https://github.com/ashah-violations/MSIBluetoothPrinter#readme',
+18 silly publish   readme: '"# MSIBluetoothPrinter" \r\n',
+18 silly publish   readmeFilename: 'README.md',
+18 silly publish   gitHead: 'b04c98d2ef51017b8dd6012af1c6f43719b5ea71',
+18 silly publish   _id: 'MSIBluetoothPrinter@0.0.1',
+18 silly publish   scripts: {},
+18 silly publish   _shasum: 'b483a875516b5317de76b65b5e6a6588cd5fed44',
+18 silly publish   _from: '.' }
+19 silly mapToRegistry name MSIBluetoothPrinter
+20 silly mapToRegistry using default registry
+21 silly mapToRegistry registry https://registry.npmjs.org/
+22 silly mapToRegistry uri https://registry.npmjs.org/MSIBluetoothPrinter
+23 verbose publish registryBase https://registry.npmjs.org/
+24 silly publish uploading C:\Users\Avinash.Shah\AppData\Roaming\npm-cache\MSIBluetoothPrinter\0.0.1\package.tgz
+25 verbose stack Error: Invalid name: "MSIBluetoothPrinter"
+25 verbose stack     at ensureValidName (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\normalize-package-data\lib\fixer.js:322:15)
+25 verbose stack     at Object.module.exports.fixNameField (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\normalize-package-data\lib\fixer.js:211:5)
+25 verbose stack     at CachingRegistryClient.publish (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\publish.js:41:11)
+25 verbose stack     at C:\Program Files (x86)\nodejs\node_modules\npm\lib\publish.js:144:14
+25 verbose stack     at mapToRegistry (C:\Program Files (x86)\nodejs\node_modules\npm\lib\utils\map-to-registry.js:55:3)
+25 verbose stack     at publish_ (C:\Program Files (x86)\nodejs\node_modules\npm\lib\publish.js:114:3)
+25 verbose stack     at Array.<anonymous> (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\slide\lib\bind-actor.js:15:8)
+25 verbose stack     at LOOP (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\slide\lib\chain.js:15:14)
+25 verbose stack     at LOOP (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\slide\lib\chain.js:14:28)
+25 verbose stack     at chain (C:\Program Files (x86)\nodejs\node_modules\npm\node_modules\slide\lib\chain.js:20:5)
+26 verbose cwd C:\Users\Avinash.Shah\Documents\GitHubVisualStudio\MSIBluetoothPrinter
+27 error Windows_NT 6.1.7601
+28 error argv "C:\\Program Files (x86)\\nodejs\\\\node.exe" "C:\\Program Files (x86)\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "publish" "C:\\Users\\Avinash.Shah\\Documents\\GitHubVisualStudio\\MSIBluetoothPrinter"
+29 error node v0.12.2
+30 error npm  v2.7.4
+31 error Invalid name: "MSIBluetoothPrinter"
+32 error If you need help, you may report this error at:
+32 error     <https://github.com/npm/npm/issues>
+33 verbose exit [ 1, true ]

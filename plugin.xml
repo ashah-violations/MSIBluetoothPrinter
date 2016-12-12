@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="msi.cordova.bluetooth.zbtprinter" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>MSIBluetoothPrinter</name>
+    <description>A Cordova/Phonegap driver for Zebra bluetooth printers</description>
+    <license>Apache</license>
+    <author>Avinash Shah</author>
+    <engines>
+      <engine name="cordova" version=">=3.0.0" />
+    </engines>
+  <!-- interface -->
+    <js-module name="MSIBluetoothPrinter" src="www/MSIBluetoothPrinter.js">
+        <clobbers target="cordova.plugins.MSIBluetoothPrinter" />
+    </js-module>
+  <!-- android -->
+  <platform name="android">
+
+    <config-file target="AndroidManifest.xml" parent="/*">
+      <uses-permission android:name="android.permission.BLUETOOTH" />
+      <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    </config-file>
+    <source-file src="src/android/MSIBluetoothPrinter.java" target-dir="src/android" />
+
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="MSIBluetoothPrinter">
+        <param name="android-package" value="msi.cordova.bluetooth.printer.MSIBluetoothPrinter" />
+      </feature>
+    </config-file>
+
+    <source-file src="src/android/ZSDK_ANDROID_API.jar" target-dir="libs"/>
+  </platform>
+  <!-- ios -->
+  <platform name="ios">
+    <config-file target="config.xml" parent="/*">
+      <feature name="MSIBluetoothPrinter">
+        <param name="ios-package" value="MSIBluetoothPrinter"/>
+      </feature>
+    </config-file>
+
+    <header-file src="src/ios/MSIBluetoothPrinter.h" />
+    <source-file src="src/ios/MSIBluetoothPrinter.m" />
+
+  </platform>
+</plugin>

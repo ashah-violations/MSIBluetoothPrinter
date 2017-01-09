@@ -37,6 +37,26 @@
     </config-file>
     <header-file src="src/ios/MSIBluetoothPrinter.h" />
     <source-file src="src/ios/MSIBluetoothPrinter.m" />
-    
+    <header-file src="src/ios/zebra/include/MfiBtPrinterConnection.h" />
+    <header-file src="src/ios/zebra/include/ZebraPrinterFactory.h" />
+    <header-file src="src/ios/zebra/include/ZebraPrinterConnection.h" />
+    <header-file src="src/ios/zebra/include/ZebraPrinter.h" />
+    <header-file src="src/ios/zebra/include/FormatUtil.h" />
+    <header-file src="src/ios/zebra/include/FileUtil.h" />
+    <header-file src="src/ios/zebra/include/PrinterStatus.h" />
+    <header-file src="src/ios/zebra/include/PrinterStatusMessages.h" />
+    <header-file src="src/ios/zebra/include/ZplPrintMode.h" />
+    <header-file src="src/ios/zebra/include/GraphicsUtil.h" />
+    <header-file src="src/ios/zebra/include/DiscoveredPrinter.h" />
+    <header-file src="src/ios/zebra/include/FieldDescriptionData.h" />
+    <header-file src="src/ios/zebra/include/DiscoveredPrinterNetwork.h" />
+    <header-file src="src/ios/zebra/include/MagCardReader.h" />
+    <header-file src="src/ios/zebra/include/NetworkDiscoverer.h" />
+    <header-file src="src/ios/zebra/include/SGD.h" />
+    <header-file src="src/ios/zebra/include/SmartCardReader.h" />
+    <header-file src="src/ios/zebra/include/ToolsUtil.h" />
+    <header-file src="src/ios/zebra/include/TcpPrinterConnection.h" />
+    <source-file src="src/ios/zebra/libZSDK_API.a" framework="true" />
+    <framework src="ExternalAccessory.framework" />
   </platform>
 </plugin>

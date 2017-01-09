@@ -1,6 +1,6 @@
 var exec = require('cordova/exec');
 
-exports.print = function(mac, str, successCallback, errorCallback) {
+exports.print = function(str, successCallback, errorCallback) {
     cordova.exec(successCallback, errorCallback, 'MSIBluetoothPrinter', 'print', [str]);
 };
 

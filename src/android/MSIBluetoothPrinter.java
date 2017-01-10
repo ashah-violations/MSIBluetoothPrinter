@@ -1,4 +1,4 @@
-package msi.cordova.bluetooth.printer;
+package msi.cordova.bluetooth.zbtprinter;
 
 import java.io.IOException;
 

@@ -25,7 +25,8 @@ public class MSIBluetoothPrinter extends CordovaPlugin {
         if (action.equals("sendData")) {
             try {
                 String msg = args.getString(0);
-                sendData(callbackContext, msg);
+                String mac = args.getString(1);
+                sendData(callbackContext, msg,mac);
             } catch (Exception e) {
                 Log.e(LOG_TAG, e.getMessage());
                 e.printStackTrace();
@@ -91,12 +92,11 @@ public class MSIBluetoothPrinter extends CordovaPlugin {
     /*
      * This will send data to be printed by the bluetooth printer
      */
-    void sendData(final CallbackContext callbackContext, final String msg) throws IOException {
+    void sendData(final CallbackContext callbackContext, final String msg, final String mac) throws IOException {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    mac=findMac();
                     // Instantiate insecure connection for given Bluetooth MAC Address.
                     Connection thePrinterConn = new BluetoothConnectionInsecure(mac);
 

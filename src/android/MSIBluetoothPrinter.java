@@ -77,20 +77,19 @@ public class MSIBluetoothPrinter extends CordovaPlugin {
             @Override
             public void run() {
                 try {
-                    BluetoothDiscoverer.findPrinters(this.cordova.getActivity().getApplicationContext(), new 			DiscoveryHandler() {
+                    BluetoothDiscoverer.findPrinters(this.cordova.getActivity().getApplicationContext(), new DiscoveryHandler() {
+						public void foundPrinter(DiscoveredPrinter printer) {
+                  		mac = printer.address;
+						}
 
-              		public void foundPrinter(DiscoveredPrinter printer) {
-                  	mac = printer.address;
-                  
-              		}
+              			public void discoveryFinished() {
+                  			//Discovery is done
+              			}
 
-              		public void discoveryFinished() {
-                  		//Discovery is done
-              		}
-
-              		public void discoveryError(String message) {
-                  
-              		} 
+              			public void discoveryError(String message) {
+							callbackContext.error("No Printer found");
+              			} 
+					});
                     // Instantiate insecure connection for given Bluetooth MAC Address.
                     Connection thePrinterConn = new BluetoothConnectionInsecure(mac);
 
@@ -101,7 +100,7 @@ public class MSIBluetoothPrinter extends CordovaPlugin {
                         thePrinterConn.open();
 
                         // Send the data to printer as a byte array.
-//                        thePrinterConn.write("^XA^FO0,20^FD^FS^XZ".getBytes());
+						// thePrinterConn.write("^XA^FO0,20^FD^FS^XZ".getBytes());
                         thePrinterConn.write(msg.getBytes());
 
 

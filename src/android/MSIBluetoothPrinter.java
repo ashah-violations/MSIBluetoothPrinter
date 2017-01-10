@@ -22,7 +22,7 @@ public class MSIBluetoothPrinter extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
 
-        if (action.equals("print")) {
+        if (action.equals("sendData")) {
             try {
                 String msg = args.getString(0);
                 sendData(callbackContext, msg);
@@ -67,7 +67,27 @@ public class MSIBluetoothPrinter extends CordovaPlugin {
           e.printStackTrace();
       }      
     }
-
+    private String findMac() {
+        try {
+            BluetoothDiscoverer.findPrinters(this.cordova.getActivity().getApplicationContext(), new DiscoveryHandler() {
+                
+                public void foundPrinter(DiscoveredPrinter printer) {
+                    mac = printer.address;
+                }
+                
+                public void discoveryFinished() {
+                    //Discovery is done
+                }
+                
+                public void discoveryError(String message) {
+                }
+            });
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return mac;
+    }
     /*
      * This will send data to be printed by the bluetooth printer
      */
@@ -76,19 +96,7 @@ public class MSIBluetoothPrinter extends CordovaPlugin {
             @Override
             public void run() {
                 try {
-                    BluetoothDiscoverer.findPrinters(this.cordova.getActivity().getApplicationContext(), new DiscoveryHandler() {
-						public void foundPrinter(DiscoveredPrinter printer) {
-                  		mac = printer.address;
-						}
-
-              			public void discoveryFinished() {
-                  			//Discovery is done
-              			}
-
-              			public void discoveryError(String message) {
-							callbackContext.error("No Printer found");
-              			} 
-					});
+                    mac=findMac();
                     // Instantiate insecure connection for given Bluetooth MAC Address.
                     Connection thePrinterConn = new BluetoothConnectionInsecure(mac);
 

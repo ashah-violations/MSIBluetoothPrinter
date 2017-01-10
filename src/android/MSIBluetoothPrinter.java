@@ -24,16 +24,15 @@ public class MSIBluetoothPrinter extends CordovaPlugin {
 
         if (action.equals("print")) {
             try {
-                String mac = args.getString(0);
-                String msg = args.getString(1);
-                sendData(callbackContext, mac, msg);
+                String msg = args.getString(0);
+                sendData(callbackContext, msg);
             } catch (Exception e) {
                 Log.e(LOG_TAG, e.getMessage());
                 e.printStackTrace();
             }
             return true;
         }
-        if (action.equals("find")) {
+        if (action.equals("findPrinter")) {
             try {
                 findPrinter(callbackContext);
             } catch (Exception e) {

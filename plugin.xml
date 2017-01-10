@@ -22,7 +22,7 @@
 
     <config-file target="res/xml/config.xml" parent="/*">
       <feature name="MSIBluetoothPrinter">
-        <param name="android-package" value="MSIBluetoothPrinter" />
+        <param name="android-package" value="msi.cordova.bluetooth.printer.MSIBluetoothPrinter" />
       </feature>
     </config-file>
 

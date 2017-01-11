@@ -50,7 +50,8 @@ public class MSIBluetoothPrinter extends CordovaPlugin {
           BluetoothDiscoverer.findPrinters(this.cordova.getActivity().getApplicationContext(), new DiscoveryHandler() {
 
               public void foundPrinter(DiscoveredPrinter printer) {
-                  String macAddress = printer.address;
+                  DiscoveredPrinterBluetooth p = (DiscoveredPrinterBluetooth) printer;
+                  String macAddress = p.address;
                   //I found a printer! I can use the properties of a Discovered printer (address) to make a Bluetooth Connection
                   callbackContext.success(macAddress);
               }
@@ -73,7 +74,8 @@ public class MSIBluetoothPrinter extends CordovaPlugin {
             BluetoothDiscoverer.findPrinters(this.cordova.getActivity().getApplicationContext(), new DiscoveryHandler() {
                 
                 public void foundPrinter(DiscoveredPrinter printer) {
-                    mac = printer.address;
+                    DiscoveredPrinterBluetooth p = (DiscoveredPrinterBluetooth) printer;
+                    mac = p.address;
                 }
                 
                 public void discoveryFinished() {
@@ -92,13 +94,14 @@ public class MSIBluetoothPrinter extends CordovaPlugin {
     /*
      * This will send data to be printed by the bluetooth printer
      */
-    void sendData(final CallbackContext callbackContext, final String msg, final String mac) throws IOException {
+    void sendData(final CallbackContext callbackContext, final String msg, final String macAddress) throws IOException {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
+                    //mac=findMac();
                     // Instantiate insecure connection for given Bluetooth MAC Address.
-                    Connection thePrinterConn = new BluetoothConnectionInsecure(mac);
+                    Connection thePrinterConn = new BluetoothConnectionInsecure(macAddress);
 
                     // Verify the printer is ready to print
                     if (isPrinterReady(thePrinterConn)) {
@@ -134,6 +137,7 @@ public class MSIBluetoothPrinter extends CordovaPlugin {
         // Creates a ZebraPrinter object to use Zebra specific functionality like getCurrentStatus()
         ZebraPrinter printer = ZebraPrinterFactory.getInstance(connection);
         PrinterStatus printerStatus = printer.getCurrentStatus();
+        //connection.close();
         if (printerStatus.isReadyToPrint) {
             isOK = true;
         } else if (printerStatus.isPaused) {

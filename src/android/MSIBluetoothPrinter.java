@@ -52,12 +52,15 @@ public class MSIBluetoothPrinter extends CordovaPlugin {
               public void foundPrinter(DiscoveredPrinter printer) {
                   DiscoveredPrinterBluetooth p = (DiscoveredPrinterBluetooth) printer;
                   String macAddress = p.address;
+		  String macName=p.friendlyName;
                   //I found a printer! I can use the properties of a Discovered printer (address) to make a Bluetooth Connection
-                  callbackContext.success(p.friendlyName);
+		   callbackContext.success(p.address);
+		  
               }
 
               public void discoveryFinished() {
                   //Discovery is done
+		  callbackContext.error("no printer found");
               }
 
               public void discoveryError(String message) {

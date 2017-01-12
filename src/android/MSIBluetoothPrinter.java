@@ -7,9 +7,15 @@ import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
 import org.json.JSONException;
 import android.util.Log;
-import com.zebra.android.discovery.*;
-import com.zebra.sdk.comm.*;
-import com.zebra.sdk.printer.*;
+import android.os.Looper;
+
+import com.zebra.sdk.comm.BluetoothConnection;
+import com.zebra.sdk.comm.Connection;
+import com.zebra.sdk.comm.ConnectionException;
+import com.zebra.sdk.printer.discovery.BluetoothDiscoverer;
+import com.zebra.sdk.printer.discovery.DiscoveredPrinter;
+import com.zebra.sdk.printer.discovery.DiscoveredPrinterBluetooth;
+import com.zebra.sdk.printer.discovery.DiscoveryHandler;
 
 public class MSIBluetoothPrinter extends CordovaPlugin {
 
@@ -46,28 +52,39 @@ public class MSIBluetoothPrinter extends CordovaPlugin {
     }
     
     public void findPrinter(final CallbackContext callbackContext) {
-      try {
-          BluetoothDiscoverer.findPrinters(this.cordova.getActivity().getApplicationContext(), new DiscoveryHandler() {
+      new Thread(new Runnable() {
+            public void run() {
+                DiscoveryHandler btDiscoveryHandler = new DiscoveryHandler() {
 
-              public void foundPrinter(DiscoveredPrinter printer) {
-                  DiscoveredPrinterBluetooth p = (DiscoveredPrinterBluetooth) printer;
-                  String macAddress = p.address;
-                  //I found a printer! I can use the properties of a Discovered printer (address) to make a Bluetooth Connection
-                  callbackContext.success(macAddress);
-              }
+                    public void discoveryError(String message) {
 
-              public void discoveryFinished() {
-                  //Discovery is done
-              }
+                        callbackContext.error(message);
+                    }
 
-              public void discoveryError(String message) {
-                  //Error during discovery
-                  callbackContext.error(message);
-              }
-          });
-      } catch (Exception e) {
-          e.printStackTrace();
-      }      
+                    public void discoveryFinished() {
+
+                        callbackContext.error("not found");
+                    }
+
+                    public void foundPrinter(final DiscoveredPrinter printer) {
+                       DiscoveredPrinterBluetooth p = (DiscoveredPrinterBluetooth) printer;
+			if(p.friendlyName=="msizebra"){
+				callbackContext.success(p.address);
+			}
+                        
+                    }
+                };
+
+                Looper.prepare();
+                try {
+                    BluetoothDiscoverer.findPrinters(cordova.getActivity(), btDiscoveryHandler);
+                } catch (ConnectionException e) {
+                    callbackContext.error(e.getMessage());
+                } finally {
+                    Looper.myLooper().quit();
+                }
+            }
+        }).start();
     }
     private String findMac() {
         try {

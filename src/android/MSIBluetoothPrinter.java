@@ -68,7 +68,7 @@ public class MSIBluetoothPrinter extends CordovaPlugin {
 
                     public void foundPrinter(final DiscoveredPrinter printer) {
                        DiscoveredPrinterBluetooth p = (DiscoveredPrinterBluetooth) printer;
-			if(p.friendlyName=="msizebra"){
+			if(p.friendlyName.equals("msizebra")){
 				callbackContext.success(p.address);
 			}
                         
